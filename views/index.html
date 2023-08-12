@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      .holders {
+        width: 500px;
+        margin: 20px auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      .login-action {
+        width: inherit;
+      }
+      .action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      input {
+        width: 400px;
+        height: 50px;
+      }
+      button {
+        width: 100px;
+        height: 50px;
+      }
+      .chat-wrapper {
+        width: inherit;
+        height: 500px;
+        border: 1px solid #333;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-holder holders">
+      <h1>login</h1>
+      <div class="login-action action">
+        <input type="text" id="name" /> <button id="login">Login</button>
+      </div>
+    </div>
+
+    <div class="chat-holder holders hide">
+      <h1>Chat</h1>
+      <div class="chat-wrapper"></div>
+      <div class="chat-action action">
+        <input type="text" id="message" /> <button id="send">Send</button>
+      </div>
+    </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script></script>
+</html>
