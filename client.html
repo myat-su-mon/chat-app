@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
     <style>
       .holders {
@@ -48,12 +47,41 @@
 
     <div class="chat-holder holders hide">
       <h1>Chat</h1>
-      <div class="chat-wrapper"></div>
+      <div class="chat-wrapper">
+        <p class="chat-message"></p>
+      </div>
       <div class="chat-action action">
         <input type="text" id="message" /> <button id="send">Send</button>
       </div>
     </div>
   </body>
-  <script src="/socket.io/socket.io.js"></script>
-  <script></script>
+  <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
+  <script>
+    let socket = io.connect();
+    let loginHolder = document.querySelector(".login-holder");
+    let chatHolder = document.querySelector(".chat-holder");
+    let name = document.querySelector("#name");
+    let login = document.querySelector("#login");
+    let message = document.querySelector("#message");
+    let send = document.querySelector("#send");
+    let chatMessage = document.querySelector(".chat-message");
+
+    login.addEventListener("click", handleLogin);
+    send.addEventListener("click", sendMessage);
+
+    function handleLogin() {
+      socket.emit("login", name.value);
+    }
+
+    function sendMessage() {
+      alert(message.value);
+    }
+
+    socket.on("login-success", (data) => {
+      if (data) {
+        loginHolder.classList.add("hide");
+        chatHolder.classList.remove("hide");
+      }
+    });
+  </script>
 </html>
